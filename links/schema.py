@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> pagination
 from django.db.models import Q
 
 import graphene
@@ -8,12 +11,15 @@ from graphql import GraphQLError
 from users.schema import UserType
 
 from .models import Link, Vote
+<<<<<<< HEAD
 =======
 import graphene
 from graphene_django import DjangoObjectType
 
 from .models import Link
 >>>>>>> develop
+=======
+>>>>>>> pagination
 
 
 class LinkType(DjangoObjectType):
@@ -22,6 +28,9 @@ class LinkType(DjangoObjectType):
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> pagination
 class VoteType(DjangoObjectType):
     class Meta:
         model = Vote
@@ -111,6 +120,7 @@ class CreateVote(graphene.Mutation):
 
 class Mutation(graphene.ObjectType):
     create_link = CreateLink.Field()
+<<<<<<< HEAD
     create_vote = CreateVote.Field()
 =======
 class Query(graphene.ObjectType):
@@ -119,3 +129,6 @@ class Query(graphene.ObjectType):
     def resolve_links(self, info, **kwargs):
         return Link.objects.all()
 >>>>>>> develop
+=======
+    create_vote = CreateVote.Field()
+>>>>>>> pagination
