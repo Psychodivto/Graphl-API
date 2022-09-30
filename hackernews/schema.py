@@ -1,4 +1,5 @@
 import graphene
+<<<<<<< HEAD
 import graphql_jwt
 
 import links.schema
@@ -15,3 +16,14 @@ class Mutation(users.schema.Mutation, links.schema.Mutation, graphene.ObjectType
 
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
+=======
+
+import links.schema
+
+
+class Query(links.schema.Query, graphene.ObjectType):
+    pass
+
+
+schema = graphene.Schema(query=Query)
+>>>>>>> develop

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.db.models import Q
 
 import graphene
@@ -7,6 +8,12 @@ from graphql import GraphQLError
 from users.schema import UserType
 
 from .models import Link, Vote
+=======
+import graphene
+from graphene_django import DjangoObjectType
+
+from .models import Link
+>>>>>>> develop
 
 
 class LinkType(DjangoObjectType):
@@ -14,6 +21,7 @@ class LinkType(DjangoObjectType):
         model = Link
 
 
+<<<<<<< HEAD
 class VoteType(DjangoObjectType):
     class Meta:
         model = Vote
@@ -104,3 +112,10 @@ class CreateVote(graphene.Mutation):
 class Mutation(graphene.ObjectType):
     create_link = CreateLink.Field()
     create_vote = CreateVote.Field()
+=======
+class Query(graphene.ObjectType):
+    links = graphene.List(LinkType)
+
+    def resolve_links(self, info, **kwargs):
+        return Link.objects.all()
+>>>>>>> develop
