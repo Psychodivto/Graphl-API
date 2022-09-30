@@ -127,8 +127,40 @@ class Query(graphene.ObjectType):
 
     def resolve_links(self, info, **kwargs):
 <<<<<<< HEAD
+<<<<<<< HEAD
         return Link.objects.all()
 =======
         return Link.objects.all()
 >>>>>>> develop
 >>>>>>> master
+=======
+        return Link.objects.all()
+
+        # ...code
+#1
+class CreateLink(graphene.Mutation):
+    id = graphene.Int()
+    url = graphene.String()
+    description = graphene.String()
+
+    #2
+    class Arguments:
+        url = graphene.String()
+        description = graphene.String()
+
+    #3
+    def mutate(self, info, url, description):
+        link = Link(url=url, description=description)
+        link.save()
+
+        return CreateLink(
+            id=link.id,
+            url=link.url,
+            description=link.description,
+        )
+
+
+#4
+class Mutation(graphene.ObjectType):
+    create_link = CreateLink.Field()
+>>>>>>> hotfixes
